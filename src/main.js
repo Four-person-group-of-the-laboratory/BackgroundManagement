@@ -98,7 +98,17 @@ new Vue({
   store,
   render: h => h(App)
 })
-
+function timestampToTime (row, column) {
+  var date = new Date(row.create_date) //时间戳为10位需*1000，时间戳为13位的话不需乘1000
+  var Y = date.getFullYear() + '-'
+  var M = (date.getMonth()+1 < 10 ? '0'+(date.getMonth()+1) : date.getMonth()+1) + '-'
+  var D = date.getDate() + ' '
+  var h = date.getHours() + ':'
+  var m = date.getMinutes() + ':'
+  var s = date.getSeconds()
+  return Y+M+D+h+m+s
+  console.log(timestampToTime (1533293827000))
+  }
 // axios.interceptors.request.use(
 //   config => {
 //     if (localStorage.JWT_TOKEN) { // 判断是否存在token，如果存在的话，则每个http header都加上token
