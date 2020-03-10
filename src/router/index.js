@@ -93,6 +93,13 @@ export const asyncRoutes = [
         meta: { title: '考试记录' }
       },
       {
+        path: '/detail',
+        name: '考试详情',
+        component: () => import('@/views/analyticStatistics/testRecords/detail'),
+        meta: { title: '考试详情' },
+        hidden: true
+      },
+      {
         path: 'onlineTimeStatistics',
         name: '在线考试时间统计',
         component: () => import('@/views/analyticStatistics/onlineTimeStatistics/index'),
