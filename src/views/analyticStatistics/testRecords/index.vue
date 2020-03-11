@@ -132,7 +132,16 @@ export default {
           this.loading = false;
           this.$message.error(err);
         });
-      // axios({
+      
+      getcollege().then(rsp => {
+          this.CollegeOptions = rsp.data;
+        })
+        .catch(err => {
+          this.loading = false;
+          this.$message.error(err);
+        });
+
+        // axios({
       //   method: "get",
       //   url: "http://localhost:8080/college/getcollege/",
       //   async: true
@@ -145,13 +154,6 @@ export default {
       //     this.loading = false;
       //     this.$message.error(err);
       //   });
-      getcollege().then(rsp => {
-          this.CollegeOptions = rsp.data;
-        })
-        .catch(err => {
-          this.loading = false;
-          this.$message.error(err);
-        });
     },
 
     //时间格式化
@@ -165,7 +167,7 @@ export default {
       var s = date.getSeconds()
       return Y+M+D+h+m+s
       console.log(timestampToTime (1533293827000))
-      }
+    },
       // 跳转到详情页的方法
   //   detail(id) {
   //     // const routeData = this.$router.push({
@@ -178,6 +180,6 @@ export default {
   //       }
   //     })
   //   },
-   }
+  }
 };
 </script>
