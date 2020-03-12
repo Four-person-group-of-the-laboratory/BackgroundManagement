@@ -10,7 +10,7 @@
               <img class="card" width="200px" src="https://wpimg.wallstcn.com/577965b9-bb9e-4e02-9f0c-095b41417191" />
             </div>
             <div>
-              <router-link :to="{path:'',query:{}}"><el-button type="primary" >查看详情</el-button></router-link>
+              <router-link :to="{path:'',query:{}}"><el-button type="primary" > 查看详情</el-button></router-link>
             </div>
           </el-card>
         </el-col>
