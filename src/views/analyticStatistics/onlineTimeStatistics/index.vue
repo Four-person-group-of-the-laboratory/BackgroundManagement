@@ -1,16 +1,21 @@
 <template>
   <div class="">
-    <div style="margin-top:50px;">
-      <el-col :span="4">
-          <el-card class="box-card">
+    <div class="maim" v-for="(item, index) in arrData"
+        :key="index"
+        >
+      <el-col  span="4" class="mm">
+          <el-card class="box-card" >
             <div slot="header" class="clearfix">
-              <span>班级的名称</span>
+              <span>{{item.courseclassname}}</span>
             </div>
             <div>
               <img class="card" width="200px" src="https://wpimg.wallstcn.com/577965b9-bb9e-4e02-9f0c-095b41417191" />
             </div>
             <div>
-              <router-link :to="{path:'',query:{}}"><el-button type="primary" > 查看详情</el-button></router-link>
+              <span>共有{{item.count}}人&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </span> 
+              <router-link :to="{path:'/onlinedetail',query:{CourseClass:item.id} }"><el-button type="primary">查看详情</el-button>
+              </router-link>
             </div>
           </el-card>
         </el-col>
@@ -20,10 +25,35 @@
 
 <script>
 import Chart from '@/components/Charts/MixChart'
+import { mapGetters } from "vuex";
+import { getcourseclass } from '@/api/analyticStatistics/onlineTimeStatistics';
 
 export default {
   name: 'MixChart',
-  components: { Chart }
+  components: { Chart },
+  data() {
+    return {
+      arrData: [],
+    };
+  },
+  created() {
+    this.initPage();
+  },
+  methods: {
+    initPage() {
+      getcourseclass().then(rsp => {
+          this.arrData = rsp.data;
+        })
+        .catch(err => {
+          this.loading = false;
+          this.$message.error(err);
+        });
+    },
+
+
+    
+  }
+
 }
 </script>
 
@@ -36,5 +66,14 @@ export default {
 .component-item{
   min-height: 100px;
 }
-</style>
 
+.main{
+  width: 100%;
+  height: 100%;
+  display: flex;
+}
+.mm{
+  flex: 1;
+  margin: 10px;
+}
+</style>

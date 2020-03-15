@@ -106,6 +106,13 @@ export const asyncRoutes = [
         meta: { title: '在线考试时间统计' }
       },
       {
+        path: '/onlinedetail',
+        name: '在线统计',
+        component: () => import('@/views/analyticStatistics/onlineTimeStatistics/detail'),
+        meta: { title: '在线统计' },
+        hidden: true
+      },
+      {
         path: 'gradeRetrieval',
         name: '成绩检索',
         component: () => import('@/views/analyticStatistics/gradeRetrieval/index'),

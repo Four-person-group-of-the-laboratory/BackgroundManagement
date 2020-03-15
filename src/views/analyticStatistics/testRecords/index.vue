@@ -126,7 +126,7 @@ export default {
         .then(resp => {
           window.console.log(JSON.stringify(resp));
           this.tabledata = resp.data.data;
-          this.total = resp.data.total;
+          this.total = resp.data.data.total;
         })
         .catch(err => {
           this.loading = false;
